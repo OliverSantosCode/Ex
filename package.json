@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:OliverSantosCode/Ex.git",
   "author": "OliverSantosCode <@oliversantoscode>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

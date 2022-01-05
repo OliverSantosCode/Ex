@@ -10,6 +10,11 @@ app.post('/', function(req, res){
     res.send('POST response to the homepage');
 });
 
+app.all('/secret', function(req, res, next) {
+    console.log('Accessing the secret section ...');
+    next();
+});
+
 app.listen(3000, () => {
     console.log('Running on PORT 3000; press Ctrl+C to terminate...');
 });

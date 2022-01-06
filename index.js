@@ -6,6 +6,10 @@ app.get('/', function(req, res){
     res.send('GET response to the homepage');
 });
 
+app.get(/a/, function(req, res) {
+    res.send('/a/');
+});
+
 app.post('/', function(req, res){
     res.send('POST response to the homepage');
 });

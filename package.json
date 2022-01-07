@@ -5,7 +5,13 @@
   "repository": "git@github.com:OliverSantosCode/Ex.git",
   "author": "OliverSantosCode <@oliversantoscode>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

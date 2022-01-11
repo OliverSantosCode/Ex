@@ -10,6 +10,13 @@ app.get(/a/, function(req, res) {
     res.send('/a/');
 });
 
+app.get('/next', function(req, res, next) {
+    console.log('the response will be sent by the next function ...');
+    next();
+}, function(req, res) {
+    res.send('Hello from next');
+});
+
 app.post('/', function(req, res){
     res.send('POST response to the homepage');
 });

@@ -6,8 +6,8 @@ app.get('/', function(req, res){
     res.send('GET response to the homepage');
 });
 
-app.get(/a/, function(req, res) {
-    res.send('/a/');
+app.get(/b/, function(req, res) {
+    res.send('/b/');
 });
 
 app.get('/next', function(req, res, next) {
@@ -16,6 +16,22 @@ app.get('/next', function(req, res, next) {
 }, function(req, res) {
     res.send('Hello from next');
 });
+
+var cb0 = function(req, res, next) {
+    console.log('CB0');
+    next();
+}
+
+var cb1 = function(req, res, next) {
+    console.log('CB1');
+    next();
+}
+
+var cb2 = function(req, res) {
+    res.send('Hello from C2!');
+}
+
+app.get('/matrix', [cb0, cb1, cb2]);
 
 app.post('/', function(req, res){
     res.send('POST response to the homepage');

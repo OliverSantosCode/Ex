@@ -37,6 +37,13 @@ app.post('/', function(req, res){
     res.send('POST response to the homepage');
 });
 
+app.get('/matrixx', [cb0, cb1], function(req, res, next) {
+    console.log('the response will be sent the next function ...');
+    next();
+}, function (req, res) {
+    res.send('Hello from Matrix 2!')
+});
+
 app.all('/secret', function(req, res, next) {
     console.log('Accessing the secret section ...');
     next();

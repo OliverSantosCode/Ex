@@ -6,8 +6,8 @@ app.get('/', function(req, res){
     res.send('GET response to the homepage');
 });
 
-app.get(/b/, function(req, res) {
-    res.send('/b/');
+app.get(/z/, function(req, res) {
+    res.send('/z/');
 });
 
 app.get('/next', function(req, res, next) {
@@ -47,6 +47,17 @@ app.get('/matrixx', [cb0, cb1], function(req, res, next) {
 app.all('/secret', function(req, res, next) {
     console.log('Accessing the secret section ...');
     next();
+});
+
+app.route('/book')
+.get(function(req, res) {
+    res.send('Get a random book');
+})
+.post(function(req, res) {
+    res.send('Add a book');
+})
+.put(function(req, res) {
+    res.send('Update the book');
 });
 
 app.listen(3000, () => {

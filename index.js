@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+var router = require('./routes');
+
 app.get('/', function(req, res){
     res.send('GET response to the homepage');
 });
@@ -49,16 +51,7 @@ app.all('/secret', function(req, res, next) {
     next();
 });
 
-app.route('/book')
-.get(function(req, res) {
-    res.send('Get a random book');
-})
-.post(function(req, res) {
-    res.send('Add a book');
-})
-.put(function(req, res) {
-    res.send('Update the book');
-});
+app.use('/routes', router);
 
 app.listen(3000, () => {
     console.log('Running on PORT 3000; press Ctrl+C to terminate...');

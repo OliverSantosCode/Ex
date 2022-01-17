@@ -4,6 +4,13 @@ const app = express();
 
 var router = require('./routes');
 
+var myLogger = function(req, res, next) {
+    console.log('LOGGED');
+    next();
+}
+
+app.use(myLogger);
+
 app.get('/', function(req, res){
     res.send('GET response to the homepage');
 });

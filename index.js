@@ -9,10 +9,16 @@ var myLogger = function(req, res, next) {
     next();
 }
 
+var requestTime = function(req, res, next) {
+    req.requestTime = Date.now();
+    next();
+}
+
 app.use(myLogger);
+app.use(requestTime);
 
 app.get('/', function(req, res){
-    res.send('GET response to the homepage');
+    res.send('GET response to the homepage ' + 'Request at: ' + req.requestTime);
 });
 
 app.get(/z/, function(req, res) {

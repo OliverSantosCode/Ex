@@ -17,6 +17,11 @@ var requestTime = function(req, res, next) {
 app.use(myLogger);
 app.use(requestTime);
 
+app.use('/user/:id', function(req, res, next) {
+    console.log('Request Type: ', req.method);
+    next();
+});
+
 app.get('/', function(req, res){
     res.send('GET response to the homepage ' + 'Request at: ' + req.requestTime);
 });

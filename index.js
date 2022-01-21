@@ -26,6 +26,14 @@ app.get('/user/:id', function(req, res, next) {
     res.send('USER');
 });
 
+app.use('/users/:id', function(req, res, next) {
+    console.log('Request URL: ', req.originalUrl);
+    next();
+}, function(req, res, next) {
+    console.log('Request Type: ', req.method);
+    next();
+});
+
 app.get('/', function(req, res){
     res.send('GET response to the homepage ' + 'Request at: ' + req.requestTime);
 });

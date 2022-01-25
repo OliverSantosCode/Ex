@@ -41,6 +41,19 @@ app.use('/users/:id', function(req, res, next) {
     res.send('User Info');
 });
 
+app.get('/username/:id', function(req, res, next) {
+
+    if(req.params.id == 0) next('route');
+
+    else next();
+}, function(req, res, next) {
+    res.render('regular');
+});
+
+app.get('/username/:id', function(req, res, next) {
+    res.render('special');
+});
+
 app.get('/users/:id', function(req, res, next) {
     res.end(req.params.id);
 });

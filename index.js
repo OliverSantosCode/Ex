@@ -34,6 +34,17 @@ app.use('/users/:id', function(req, res, next) {
     next();
 });
 
+app.use('/users/:id', function(req, res, next) {
+    console.log('ID: ', req.params.id);
+    next();
+}, function(req, res, next) {
+    res.send('User Info');
+});
+
+app.get('/users/:id', function(req, res, next) {
+    res.end(req.params.id);
+});
+
 app.get('/', function(req, res){
     res.send('GET response to the homepage ' + 'Request at: ' + req.requestTime);
 });

@@ -25,4 +25,25 @@ router.route('/book')
     res.send('Update the book');
 });
 
+router.use('/users/:id', function(req, res, next) {
+    console.log('Request URL: ', req.originalUrl);
+    next();
+}, function(req, res, next) {
+    console.log('Request Type: ', req.method);
+    next();
+});
+
+router.get('/username/:id', function(req, res, next) {
+
+    if(req.params.id == 0) next('route');
+
+    else next();
+}, function(req, res, next) {
+    res.render('regular');
+});
+
+router.get('/username/:id', function(req, res, next) {
+    res.render('special');
+});
+
 module.exports = router;

@@ -86,6 +86,11 @@ app.all('/secret', function(req, res, next) {
 
 app.use('/routes', router);
 
+app.use(function(err, req, res, next) {
+    console.log(err.stack);
+    res.status(500).send('Something broke');
+});
+
 app.listen(3000, () => {
     console.log('Running on PORT 3000; press Ctrl+C to terminate...');
 });

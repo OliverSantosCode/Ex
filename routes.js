@@ -1,7 +1,21 @@
 var express = require('express');
 var router = express.Router();
 
-router.use(function timelog(req, res, next) {
+const options = {
+    dotFiles: 'ignore',
+    etag: false,
+    extensions: ['htm', 'html'],
+    index: false,
+    maxAge: '1d',
+    redirect: false,
+    setHeaders: function(res, path, stat) {
+        res.set('x-timestamp', Date.now());
+    }
+}
+
+router.use(express.static('public', options));
+
+router.use(function timeLog(req, res, next) {
     console.log('Time: ', Date.now());
     next();
 });

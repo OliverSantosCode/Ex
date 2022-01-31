@@ -1,4 +1,5 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var router = express.Router();
 
 const options = {
@@ -14,6 +15,8 @@ const options = {
 }
 
 router.use(express.static('public', options));
+
+router.use(cookieParser());
 
 router.use(function timeLog(req, res, next) {
     console.log('Time: ', Date.now());

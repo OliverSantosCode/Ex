@@ -14,6 +14,9 @@ var requestTime = function(req, res, next) {
     next();
 }
 
+app.set('views', './views');
+app.set('view engine', 'pug');
+
 app.use(myLogger);
 app.use(requestTime);
 
@@ -39,6 +42,10 @@ app.get('/users/:id', function(req, res, next) {
 
 app.get('/', function(req, res){
     res.send('GET response to the homepage ' + 'Request at: ' + req.requestTime);
+});
+
+app.get('/pug', function(req, res) {
+    res.render('index', { title: 'Express with Pug', message: 'Hello there!' });
 });
 
 app.get(/z/, function(req, res) {

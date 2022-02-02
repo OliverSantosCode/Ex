@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var router = require('./routes');
 
 var myLogger = function(req, res, next) {
@@ -93,6 +95,8 @@ app.all('/secret', function(req, res, next) {
 
 app.use('/routes', router);
 
+app.use(bodyParser());
+app.use(methodOverride());
 app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.status(500).send('Something broke');

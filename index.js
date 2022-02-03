@@ -16,6 +16,11 @@ var requestTime = function(req, res, next) {
     next();
 }
 
+function logErrors(err, req, res, next) {
+    console.error(err.stack);
+    next(err);
+}
+
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -97,6 +102,9 @@ app.use('/routes', router);
 
 app.use(bodyParser());
 app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
 app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.status(500).send('Something broke');

@@ -21,6 +21,14 @@ function logErrors(err, req, res, next) {
     next(err);
 }
 
+function clientErrorHandler(err, req, res, next) {
+    if(req.xhr) {
+        res.status(500).send({ error: 'Something failed'});
+    }else {
+        next(err);
+    }
+}
+
 app.set('views', './views');
 app.set('view engine', 'pug');
 

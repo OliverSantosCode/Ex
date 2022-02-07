@@ -29,6 +29,11 @@ function clientErrorHandler(err, req, res, next) {
     }
 }
 
+function errorHandler(err, req, res, next) {
+    res.status(500);
+    res.render('error', { error: err });
+}
+
 app.set('views', './views');
 app.set('view engine', 'pug');
 

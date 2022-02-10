@@ -68,7 +68,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/pug', function(req, res) {
-    res.render('index', { title: 'Express with Pug', message: 'Hello there!' });
+    res.render('index', { title: 'Express with Pug', message: 'Hello there!', text: 'Testing the Pug '});
 });
 
 app.get(/z/, function(req, res) {

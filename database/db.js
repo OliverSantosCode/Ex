@@ -22,3 +22,16 @@ books.insert({name: 'The Art od war'}, null, function(err, body) {
 books.list(function(err, body) {
     console.log(body.rows);
 });
+
+// LevelDB
+var levelup = require('levelup');
+var db = levelup('./mydb');
+
+db.put('name', 'LevelUP', function(err) {
+
+    if(err) return console.log('Ops!', err);
+    db.get('name', function(err, value) {
+        if(err) return console.log('Ooops!', err);
+        console.log('name= ' + value);
+    });
+});

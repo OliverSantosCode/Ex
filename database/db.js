@@ -52,3 +52,18 @@ connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
 });
 
 connection.end();
+
+// MongoDB
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb://localhost:27017/animals', function(err, result) {
+    if(err) {
+        throw err;
+    }
+    db.collection('animals').find().toArray(function(err, result) {
+        if(err) {
+            throw err;
+        }
+        console.log(result);
+    });
+});

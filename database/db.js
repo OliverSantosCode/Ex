@@ -67,3 +67,15 @@ MongoClient.connect('mongodb://localhost:27017/animals', function(err, result) {
         console.log(result);
     });
 });
+
+// Neo4j
+var apoc = require('apoc');
+
+apoc.query('match (n) return n').exec().then(
+    function(res) {
+        console.log(res);
+    },
+    function(fail) {
+        console.log(fail);
+    }
+);
